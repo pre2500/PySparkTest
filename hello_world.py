@@ -1,11 +1,8 @@
 import sys
-from random
-import random
-from operator
-import add
+from random import random
+from operator import add
 
-from pyspark.sql
-import SparkSession
+from pyspark.sql import SparkSession
 
 spark = SparkSession\
   .builder\
