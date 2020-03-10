@@ -1,6 +1,5 @@
 import sys
-from random import random
-from operator import add
+import random
 
 from pyspark.sql import SparkSession
 
