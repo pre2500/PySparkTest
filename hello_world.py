@@ -1,18 +1,15 @@
-import sys
-import random
-
 from pyspark.sql import SparkSession
+from pyspark import SparkContext
+from pyspark import SparkConf
+from pyspark.sql import SQLContext
 
 spark = SparkSession\
-  .builder\
-  .appName("HelloWorld")\
-  .getOrCreate()
+    .builder\
+    .appName("example-spark")\
+    .config("spark.sql.crossJoin.enabled","true")\
+    .getOrCreate()
+sc = SparkContext()
+sqlContext = SQLContext(sc)
 
-data = spark.parallelize(list("Hello World"))
-counts = data.map(lambda x:
-  (x, 1)).reduceByKey(add).sortBy(lambda x: x[1],
-  ascending = False).collect()
-
-for (word, count) in counts:
-  print("{}: {}".format(word, count))
+print("Hello world")
 
