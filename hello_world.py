@@ -1,8 +1,16 @@
-from pyspark import SparkContext
+import sys
+from random import random
 from operator import add
+
+from pyspark.sql import SparkSession
+
+  spark = SparkSession\
+        .builder\
+        .appName("HelloWorld")\
+        .getOrCreate()
  
 
-data = sc.parallelize(list("Hello World"))
+data = spark.parallelize(list("Hello World"))
 counts = data.map(lambda x: 
 	(x, 1)).reduceByKey(add).sortBy(lambda x: x[1],
 	 ascending=False).collect()
