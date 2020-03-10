@@ -4,10 +4,10 @@ from operator import add
 
 from pyspark.sql import SparkSession
 
-  spark = SparkSession\
-        .builder\
-        .appName("HelloWorld")\
-        .getOrCreate()
+spark = SparkSession\
+.builder\
+.appName("HelloWorld")\
+.getOrCreate()
  
 
 data = spark.parallelize(list("Hello World"))
