@@ -5,7 +5,7 @@ from pyspark.sql import SQLContext
 
 spark = SparkSession\
     .builder\
-    .appName("example-spark")\
+    .appName("Hello World")\
     .config("spark.sql.crossJoin.enabled","true")\
     .getOrCreate()
 sc = SparkContext()
