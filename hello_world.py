@@ -1,15 +1,15 @@
 from pyspark.sql import SparkSession
-from pyspark import SparkContext
-from pyspark import SparkConf
-from pyspark.sql import SQLContext
 
-spark = SparkSession\
-    .builder\
-    .appName("Hello World")\
-    .config("spark.sql.crossJoin.enabled","true")\
-    .getOrCreate()
-sc = SparkContext()
-sqlContext = SQLContext(sc)
+def init_spark():
+  spark = SparkSession.builder.appName("HelloWorld").getOrCreate()
+  sc = spark.sparkContext
+  return spark,sc
 
-print("Hello world")
+def main():
+  spark,sc = init_spark()
+  nums = sc.parallelize([1,2,3,4])
+  print(nums.map(lambda x: x*x).collect())
 
+
+if __name__ == '__main__':
+  main()
