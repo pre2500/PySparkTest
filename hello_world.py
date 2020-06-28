@@ -13,6 +13,10 @@ def main():
   print(nums.map(lambda x: x*x).collect())
   for param in os.environ.keys():
     print "%20s %s" % (param,os.environ[param])
+    print("Now printing marathon app id and task id")
+    print(os.getenv('MARATHON_APP_ID'))
+    print(os.getenv('MESOS_TASK_ID'))
+    
 
 
 if __name__ == '__main__':
