@@ -1,5 +1,6 @@
 from pyspark.sql import SparkSession
 import os
+import time
 
 
 def init_spark():
@@ -10,6 +11,7 @@ def init_spark():
 def main():
   spark,sc = init_spark()
   nums = sc.parallelize([1,2,3,4])
+  time.sleep(300)
   print(nums.map(lambda x: x*x).collect())
   for param in os.environ.keys():
     print "%20s %s" % (param,os.environ[param])
