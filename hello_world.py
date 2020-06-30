@@ -13,9 +13,11 @@ def init_spark():
 def main():
     (spark, sc) = init_spark()
     nums = sc.parallelize([1, 2, 3, 4])
-    time.sleep(300)
+    time.sleep(120)
     print nums.map(lambda x: x * x).collect()
     print os.getenv('SPARK_SUBMIT_OPTS')
+    for item, value in os.environ.items():
+        print('{}: {}'.format(item, value))
     
 
 
