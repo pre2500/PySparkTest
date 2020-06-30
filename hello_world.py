@@ -1,5 +1,3 @@
-#!/usr/bin/python
-# -*- coding: utf-8 -*-
 from pyspark.sql import SparkSession
 import os
 import time
@@ -36,4 +34,5 @@ def download_file_from_s3():
 
 if __name__ == '__main__':
     main()
+
 
