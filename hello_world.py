@@ -12,10 +12,10 @@ def init_spark():
 
 def main():
     (spark, sc) = init_spark()
-    time.sleep(60)
     print os.getenv('SPARK_SUBMIT_OPTS')
     for item, value in os.environ.items():
         print('{}: {}'.format(item, value))
+    time.sleep(60)
 
 
 if __name__ == '__main__':
