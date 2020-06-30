@@ -12,25 +12,10 @@ def init_spark():
 
 def main():
     (spark, sc) = init_spark()
-    nums = sc.parallelize([1, 2, 3, 4])
-    time.sleep(120)
-    print nums.map(lambda x: x * x).collect()
+    time.sleep(60)
     print os.getenv('SPARK_SUBMIT_OPTS')
     for item, value in os.environ.items():
         print('{}: {}'.format(item, value))
-    
-
-
-def download_file_from_s3():
-    s3 = boto3.resource('s3')
-    try:
-        s3.Bucket('tardis-im-clients').download_file(KEY,
-                'keycloak_client_list.csv')
-    except botocore.exceptions.ClientError, e:
-        if e.response['Error']['Code'] == '404':
-            print 'The object does not exist.'
-        else:
-            raise
 
 
 if __name__ == '__main__':
