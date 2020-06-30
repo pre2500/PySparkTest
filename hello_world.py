@@ -1,8 +1,7 @@
 from pyspark.sql import SparkSession
 import os
 import time
-import boto3
-import botocore
+
 
 
 def init_spark():
@@ -17,7 +16,7 @@ def main():
     time.sleep(300)
     print nums.map(lambda x: x * x).collect()
     print os.getenv('SPARK_SUBMIT_OPTS')
-    download_file_from_s3()
+    
 
 
 def download_file_from_s3():
