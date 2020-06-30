@@ -13,12 +13,18 @@ def main():
   nums = sc.parallelize([1,2,3,4])
   time.sleep(300)
   print(nums.map(lambda x: x*x).collect())
-  for param in os.environ.keys():
-    print "%20s %s" % (param,os.environ[param])
-    print("Now printing marathon app id and task id")
-    print(os.getenv('MARATHON_APP_ID'))
-    print(os.getenv('MESOS_TASK_ID'))
-    
+  print(os.getenv('SPARK_SUBMIT_OPTS'))
+  download_file_from_s3()
+  
+def download_file_from_s3():
+   s3 = boto3.resource('s3')
+   try:
+       s3.Bucket('tardis-im-clients').download_file(KEY, 'keycloak_client_list.csv')
+    except botocore.exceptions.ClientError as e:
+       if e.response['Error']['Code'] == "404":
+           print("The object does not exist.")
+       else:
+           raise
 
 
 if __name__ == '__main__':
