@@ -15,7 +15,7 @@ def main():
     print os.getenv('SPARK_SUBMIT_OPTS')
     for item, value in os.environ.items():
         print('{}: {}'.format(item, value))
-    time.sleep(60)
+    time.sleep(300)
 
 
 if __name__ == '__main__':
