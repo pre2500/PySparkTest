@@ -15,6 +15,7 @@ def main():
         (spark, sc) = init_spark()
         print os.getenv('SPARK_SUBMIT_OPTS')
         time.sleep(60)
+        sc.stop()
 
 
 if __name__ == '__main__':
