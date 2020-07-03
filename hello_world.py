@@ -11,11 +11,10 @@ def init_spark():
 
 
 def main():
-    (spark, sc) = init_spark()
-    print os.getenv('SPARK_SUBMIT_OPTS')
-    for item, value in os.environ.items():
-        print('{}: {}'.format(item, value))
-    time.sleep(300)
+    for i in range(3):
+        (spark, sc) = init_spark()
+        print os.getenv('SPARK_SUBMIT_OPTS')
+        time.sleep(60)
 
 
 if __name__ == '__main__':
